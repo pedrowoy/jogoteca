@@ -2,6 +2,7 @@
 import { Passero_One } from "next/font/google";
 import { Sidebar } from "./components/sidebar";
 import { useGetFeaturedGames } from "./hooks/getFeaturedGames";
+import { Search } from "./components/search";
 import { GameCard } from "./components/card";
 import Link from "next/link";
 
@@ -23,16 +24,16 @@ export default function Home() {
   }
 
   return (
-    <div className="grid grid-cols-12 gap-2 px-2">
-      <div className="col-span-3">
-        <Link href="/">
-          <h1 className={`${passeroOne.className} text-5xl`}>Jogoteca</h1>
+    <div className="grid grid-cols-12 gap-2 px-2 m-5">
+      <div className="col-span-2">
+        <Link href="/" className="flex flex-wrap mb-6">
+          <h1 className={`${passeroOne.className} text-6xl leading-11`}>Jogoteca</h1>
         </Link>
         <Sidebar />
       </div>
-      <main className="col-span-9 grid-cols-subgrid grid gap-6">
-        <h1 className="col-span-12">Hello World!</h1>
-        {data.results.map(
+      <main className="col-span-10 grid-cols-subgrid grid gap-6">
+        <div className="col-span-12"><Search /></div>
+        {data?.results?.map(
           (game: {
             id: string;
             background_image: string;

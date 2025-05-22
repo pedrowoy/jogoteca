@@ -1,10 +1,4 @@
 import Image from "next/image";
-import { Passero_One } from "next/font/google";
-
-const passeroOne = Passero_One({
-  subsets: ["latin"],
-  weight: ["400"],
-});
 
 interface GameCardProps {
   image: string;
@@ -13,21 +7,23 @@ interface GameCardProps {
   metacritic: string;
 }
 
+const hasImage = (image : string) => {
+  return image !== null ? image : "https://placehold.co/400x400/8D99AE/2B2D42/png?text=imagem+indispon%C3%ADvel"
+}
+
 export const GameCard = ({ image, name, genre, metacritic }: GameCardProps) => {
   return (
-    <div className={`${passeroOne.className}`}>
-      {image && (
+    <div className="mb-5 hover:border-white border-solid border border-gray rounded-xl p-2.5 cursor-pointer" >
         <Image
-          src={image}
+          src={hasImage(image)}
           alt={name}
           width={400}
           height={400}
-          className="object-none h-[300]"
+          className="object-none h-[300] rounded-xl mb-2.5"
         />
-      )}
-      <h2>{name}</h2>
+      <h2 className="text-xl font-semibold mb-2">{name}</h2>
       <p>{genre}</p>
-      <p>{metacritic}</p>
+      <p>{`metacritic: ${metacritic}`}</p>
     </div>
   );
 };
