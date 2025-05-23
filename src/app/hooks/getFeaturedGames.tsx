@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 
 const fetchFeaturedGames = async () => {
   const response = await fetch(
-    `https://api.rawg.io/api/games?key=${process.env.NEXT_PUBLIC_API_KEY}&ordering=-metacritic&page_size=16`
+    `https://api.rawg.io/api/games?key=${process.env.NEXT_PUBLIC_API_KEY}&ordering=-metacritic&page_size=20`
   );
 
   const data = await response.json();
