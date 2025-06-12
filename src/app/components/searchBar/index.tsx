@@ -22,10 +22,18 @@ export const SearchBar = () => {
         router.push(`/search?${createSearchParams('game', term)}`)                   
     };
 
+    const handleKeyDown = (e: { key: string; preventDefault: () => void; }) => {
+            if (e.key === 'Enter') {
+            handleClick();
+            e.preventDefault()
+            }
+    };
+
+
     return (
         <div className="flex flex-row">
-        <input type="search" placeholder="Procurar" className="w-full h-10 rounded-xl focus:bg-white focus:text-blue-gray border-light-gray border-solid border text-light-gray p-2 font-medium" onChange={handleChange} />
-            <button className="p-2.5 cursor-pointer" onClick={handleClick}>
+        <input type="search" placeholder="Procurar" className="w-full h-10 rounded-xl focus:bg-white focus:text-blue-gray border-light-gray border-solid border text-light-gray p-2 font-medium" onChange={handleChange} onKeyDown={handleKeyDown}/>
+            <button className="p-2.5 cursor-pointer" onClick={handleClick} >
                 <IconSearch className="w-7.5 h-7.5 text-gray hover:text-white"/>
             </button>
         </div>
