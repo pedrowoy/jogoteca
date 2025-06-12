@@ -19,11 +19,11 @@ export const GameCard = ({ image, name, genre, metacritic }: GameCardProps) => {
           alt={name}
           width={400}
           height={400}
-          className="object-none h-[300] rounded-xl mb-2.5"
+          className="object-none h-[300] rounded-xl mb-2.5 max-w-400px"
         />
       <h2 className="text-xl font-semibold mb-2">{name}</h2>
       <p>{genre}</p>
-      <p>{`metacritic: ${metacritic}`}</p>
+      <p>{`metacritic: ${metacritic ? metacritic : '-'}`}</p>
     </div>
   );
 };
